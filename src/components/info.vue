@@ -23,7 +23,11 @@
             ...mapActions(['clearAllCart'])
         },
         computed:{
-            ...mapGetters(['totalPrice','totalNum'])
+            // ...mapGetters(['totalPrice','totalNum'])
+            ...mapGetters({
+                totalPrice:'totalPrice',
+                totalNum:'totalNum'
+            })
         }
     
     }

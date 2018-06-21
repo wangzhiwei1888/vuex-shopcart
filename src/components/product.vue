@@ -12,6 +12,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- <tr v-for='(shop,index) in cart.shop_list'> -->
         <tr v-for='(shop,index) in shoplist'>
           <td>{{shop.id}}</td>
           <td>{{shop.name}}</td>
@@ -32,7 +33,8 @@
 <script>
   import {
     mapGetters,
-    mapActions
+    mapActions,
+    mapState
   } from "vuex";
 
   export default {
@@ -43,11 +45,38 @@
     computed: {
       ...mapGetters(['shoplist'])
     },
+    // computed: {
+    //   ...mapState({
+    //     shoplist (state) {
+    //       // console.log(state);
+    //       return state.cart.shop_list
+    //     }
+    //   })
+    // },
+    // computed: {
+    //   ...mapState({
+    //     shoplist: state => state.cart.shop_list
+    //   })
+    // },
+    // computed: {
+    //   ...mapState(['cart'])
+    // },
+
     mounted() {
 
     },
     methods: {
-      ...mapActions(['addToCart'])
+
+      // ...mapActions(['addToCart'])
+      addToCart:function(shop){
+
+        // console.log(this.$store.state.cart);
+        this.$store.commit('add',shop)
+      }
+      // addToCart:function(shop){
+      //   this.$store.dispatch('addToCart',shop)
+      // }
+
     }
   }
 </script>
